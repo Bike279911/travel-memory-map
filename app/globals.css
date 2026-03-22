@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: 'DM Sans', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8f5ed;
+  color: #1c1a18;
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* World map styles */
+.world-map-container {
+  background: #f8f5ed;
+}
+
+/* Smoother zoom/pan: promote to GPU layer */
+.world-map-wrapper {
+  isolation: isolate;
+}
+
+.world-map-wrapper .rsm-svg {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.rsm-geography {
+  outline: none;
+  cursor: pointer;
+  transition: fill 0.15s ease;
+}
+
+.rsm-geography:focus {
+  outline: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4cfc3;
+  border-radius: 2px;
+}
+
+/* Photo grid animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.photo-item {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Upload area */
+.upload-zone {
+  border: 1.5px dashed #c0a97c;
+  transition: all 0.2s ease;
+}
+
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color: #3a7a94;
+  background: rgba(58, 122, 148, 0.04);
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
